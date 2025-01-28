@@ -1,87 +1,96 @@
-# YouTube Transcript and Quote Extractor
 
-This application allows users to fetch YouTube video transcripts and extract quotes from them based on timestamps. The application uses the `youtube_transcript_api` to get transcripts and the `GoogleGenerativeAI` model to extract structured quotes along with their start and end times.
+# YouTube Transcript and Frame Extractor
 
-## Features:
-- Fetch YouTube video transcripts in JSON format.
-- Extract quotes from transcripts along with start and end timestamps.
-- Sort quotes by their timestamp.
-- Display the extracted quotes on the web interface.
+This Streamlit-based application helps users fetch YouTube video transcripts and extract specific segments based on user queries. It uses `youtube_transcript_api` to fetch transcripts and the `GoogleGenerativeAI` model to extract relevant frames.
+
+## Features
+
+- Fetch transcripts from individual YouTube videos or playlists.
+- Convert transcripts into human-readable text with timestamps.
+- Use the **GoogleGenerativeAI** model to extract relevant frames (text segments) based on user queries.
+- Display extracted frames along with their start and end times.
 
 ## Requirements
 
-Before running the application, make sure you have the following installed:
-- Python 3.x (preferably 3.10 or later)
-- Google API Key for `GoogleGenerativeAI`
-- Required Python packages (listed below)
+### Prerequisites
 
-### Install Required Packages
+- Python 3.x (preferably 3.10 or later).
+- A GEMINI API Key from Google Cloud for **GoogleGenerativeAI**.
 
-Clone the repository or create a new directory for this project. Then, create a virtual environment (optional but recommended), and install the dependencies:
+### Install Required Python Packages
 
-1. Clone the repository (or download the script):
+Follow these steps to set up the project:
+
+1. Clone the repository or create a directory for the project:
     ```bash
-    git clone https://github.com/solankikeval166/Youtube-Transcriber-and-Quote-Extractor.git
-    
-    cd YouTube-Transcript-Extractor
+    git clone https://github.com/your-username/YouTube-Transcript-Frame-Extractor.git
+    cd YouTube-Transcript-Frame-Extractor
     ```
 
-2. Create a virtual environment (optional but recommended):
+2. Create a virtual environment (recommended):
     ```bash
     python3 -m venv venv
-    
-    source venv/bin/activate  # For macOS/Linux
-    
-    .\venv\Scripts\activate   # For Windows
+    source venv/bin/activate      # macOS/Linux
+    .\venv\Scripts\activate       # Windows
     ```
 
-3. Install the required dependencies:
+3. Install dependencies:
     ```bash
     pip install -r requirements.txt
     ```
 
-## Setup Google API Key
-
-To use the **GoogleGenerativeAI** model for quote extraction, you need to set up your own Google API key.
+## Setup GEMINI API Key
 
 1. Create a Google Cloud project and enable the [Google Generative AI API](https://ai.google.dev/gemini-api/docs/api-key).
-2. Create API credentials (API key).
-3. Enter your API key in the app interface when prompted.
+2. Generate an API key and save it securely.
+3. Enter your GEMINI API Key in the application interface when prompted.
 
 ## Running the Application
 
-To start the application:
+Start the Streamlit app with the following command:
 
-1. Make sure you have the required dependencies installed.
-2. Run the following command to launch the Streamlit app:
-    ```bash
-    streamlit run app.py
-    ```
+```bash
+streamlit run app.py
+```
 
-3. Open the application in your browser at:
-    ```
-    http://localhost:8501
-    ```
+The app will open in your default web browser at `http://localhost:8501`.
 
-### Streamlit App Interface
+## Usage
 
-- **GEMINI API Key**: Enter your GEMINI API key to extract quotes from transcripts.
-- **YouTube URLs**: Enter YouTube video URLs (one per line) for which you want to fetch transcripts and extract quotes.
-- **Fetch Transcripts and Extract Quotes**: Click this button to:
-  - Fetch the transcripts for the provided YouTube URLs.
-  - Extract quotes based on the timestamps from the transcripts.
-  - Display the quotes sorted by their timestamps.
+### Interface Overview
 
-## How It Works
+1. **GEMINI API Key**: Enter your API key to enable Google Generative AI-based processing.
+2. **Input Type**:
+   - **Playlist**: Enter the URL of a YouTube playlist.
+   - **Individual Video**: Paste one or more YouTube video URLs (one per line).
+3. **Ask a Question**: Enter a question related to the content of the videos or playlist.
+4. **Fetch Transcripts and Extract Frames**: Click the button to process the input and display relevant frames.
 
-1. **Enter YouTube URLs**: Paste one or more YouTube video URLs (one per line).
-2. **Fetch Transcripts**: The application will fetch the video transcripts from YouTube using the `youtube_transcript_api`.
-3. **Extract Quotes**: The transcript is analyzed, and relevant quotes are extracted based on the context in the video. The start and end times of each quote are also provided.
+### Output
 
-## Example
+The app will display:
+- The transcript segments related to your query.
+- Timestamps for the start and end of each segment.
+- The corresponding transcript file identifier.
 
-### Example URL:
+## Example Workflow
 
-You can use the following sample YouTube URL for testing:
-https://www.youtube.com/watch?v=XHAV87e0hLY
+1. Enter the URL of a YouTube video or playlist.
+2. Input your GEMINI API Key.
+3. Ask a question (e.g., "What are the key points about AI in this video?").
+4. Click "Fetch Transcripts and Extract Frames."
+5. Review the extracted text segments with timestamps.
 
+## Notes
+
+- If a transcript is unavailable for a video, the app will skip that video.
+- Ensure your GEMINI API Key is valid and has sufficient quota for processing.
+
+## Example Playlist URL for Testing
+
+You can use the following example URL to test the application:
+- Playlist: `https://www.youtube.com/playlist?list=PL0vfts4VzfNgUUEtEjxDVfh4iocVR3qIb`
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
